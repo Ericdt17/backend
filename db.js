@@ -7,5 +7,10 @@ export const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER,
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
     dialect: 'mysql',
-    logging: false
+    logging: false,
+    retry: { max: 5 },
+    pool: {
+        max: 5,
+        acquire: 30000,
+    }
 });
